@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const floorPlanRef = useRef<HTMLDivElement>(null);
 
-  // サンプルデータ（期限管理と重要度を追加）
+  // サンプルデータ（ピン位置を間取り図に合わせて修正）
   const sampleItems: Item[] = [
     {
       id: '1',
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
       room: 'living',
       images: [],
       tags: ['重要書類', '旅行'],
-      coordinates: { x: 25, y: 45 },
+      coordinates: { x: 45, y: 65 }, // リビング内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
       room: 'bedroom',
       images: [],
       tags: ['冬物', 'アウター'],
-      coordinates: { x: 75, y: 30 },
+      coordinates: { x: 38, y: 25 }, // 寝室内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
       room: 'garage',
       images: [],
       tags: ['DIY', '修理'],
-      coordinates: { x: 85, y: 60 },
+      coordinates: { x: 80, y: 25 }, // 書斎内の適切な位置（ガレージの代わり）
       lastAccessed: new Date(),
       createdAt: new Date()
     }
