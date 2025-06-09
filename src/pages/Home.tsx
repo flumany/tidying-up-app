@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
 import QuickAccessCard from '../components/QuickAccessCard';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { Item } from '../types';
 import { Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -96,49 +97,57 @@ const Home: React.FC = () => {
             </button>
           </div>
           
-          <div 
-            ref={floorPlanRef}
-            className="relative w-full h-64 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
-          >
-            {/* シンプルな間取り図の背景 */}
-            <div className="absolute inset-4 border-2 border-primary/30 rounded-lg">
-              {/* リビングエリア */}
-              <div className="absolute top-4 left-4 w-1/2 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                <span className="text-xs text-primary/60">リビング</span>
-              </div>
-              {/* 寝室エリア */}
-              <div className="absolute top-4 right-4 w-2/5 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                <span className="text-xs text-primary/60">寝室</span>
-              </div>
-              {/* キッチンエリア */}
-              <div className="absolute bottom-4 left-4 w-1/3 h-2/5 border border-primary/20 rounded flex items-center justify-center">
-                <span className="text-xs text-primary/60">キッチン</span>
-              </div>
-            </div>
-
-            {/* アイテムピン */}
-            {sampleItems.map((item) => (
-              <ItemPin
-                key={item.id}
-                item={item}
-                onClick={handleItemClick}
-              />
-            ))}
-
-            {/* アイテムが少ない場合の案内 */}
-            {sampleItems.length === 0 && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Plus className="text-primary" size={32} />
+          <Tabs defaultValue="1f" className="w-full">
+            <TabsList className="grid w-full grid-cols-1 max-w-xs mb-4">
+              <TabsTrigger value="1f">1F</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="1f">
+              <div 
+                ref={floorPlanRef}
+                className="relative w-full h-64 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
+              >
+                {/* シンプルな間取り図の背景 */}
+                <div className="absolute inset-4 border-2 border-primary/30 rounded-lg">
+                  {/* リビングエリア */}
+                  <div className="absolute top-4 left-4 w-1/2 h-1/2 border border-primary/20 rounded flex items-center justify-center">
+                    <span className="text-xs text-primary/60">リビング</span>
                   </div>
-                  <p className="text-muted-foreground text-sm">
-                    最初のアイテムを登録しましょう
-                  </p>
+                  {/* 寝室エリア */}
+                  <div className="absolute top-4 right-4 w-2/5 h-1/2 border border-primary/20 rounded flex items-center justify-center">
+                    <span className="text-xs text-primary/60">寝室</span>
+                  </div>
+                  {/* キッチンエリア */}
+                  <div className="absolute bottom-4 left-4 w-1/3 h-2/5 border border-primary/20 rounded flex items-center justify-center">
+                    <span className="text-xs text-primary/60">キッチン</span>
+                  </div>
                 </div>
+
+                {/* アイテムピン */}
+                {sampleItems.map((item) => (
+                  <ItemPin
+                    key={item.id}
+                    item={item}
+                    onClick={handleItemClick}
+                  />
+                ))}
+
+                {/* アイテムが少ない場合の案内 */}
+                {sampleItems.length === 0 && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <Plus className="text-primary" size={32} />
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        最初のアイテムを登録しましょう
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* クイックアクセス */}
