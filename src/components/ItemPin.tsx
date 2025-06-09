@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Item, Category } from '../types';
+import CategoryIcon from './CategoryIcon';
 
 interface ItemPinProps {
   item: Item;
@@ -40,7 +41,19 @@ const ItemPin: React.FC<ItemPinProps> = ({ item, onClick, isAnimated = false }) 
         className="w-8 h-8 rounded-full border-3 border-white shadow-lg flex items-center justify-center"
         style={{ backgroundColor: color }}
       >
-        <div className="w-3 h-3 bg-white rounded-full"></div>
+        {item.images[0] ? (
+          <img 
+            src={item.images[0]} 
+            alt={item.name}
+            className="w-6 h-6 object-cover rounded-full"
+          />
+        ) : (
+          <CategoryIcon 
+            category={item.category as Category} 
+            size={16} 
+            className="text-white"
+          />
+        )}
       </div>
       <div
         className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-2 rotate-45 border-l-3 border-b-3 border-white"

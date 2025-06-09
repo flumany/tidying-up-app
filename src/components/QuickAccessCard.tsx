@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Item } from '../types';
+import CategoryIcon from './CategoryIcon';
 
 interface QuickAccessCardProps {
   title: string;
@@ -27,9 +28,10 @@ const QuickAccessCard: React.FC<QuickAccessCardProps> = ({ title, items, onItemC
                   className="w-10 h-10 object-cover rounded-lg"
                 />
               ) : (
-                <span className="text-primary font-semibold">
-                  {item.name.charAt(0).toUpperCase()}
-                </span>
+                <CategoryIcon 
+                  category={item.category as any} 
+                  size={24} 
+                />
               )}
             </div>
             <div className="flex-1">
