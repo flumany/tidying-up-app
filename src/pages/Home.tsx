@@ -70,9 +70,9 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       {/* ヘッダー */}
-      <div className="bg-card px-6 pt-12 pb-6 shadow-soft">
+      <div className="bg-card px-6 pt-12 pb-6 shadow-soft border-b border-border">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-foreground">ホーム</h1>
@@ -88,12 +88,12 @@ const Home: React.FC = () => {
 
       {/* 間取り図ビュー */}
       <div className="px-6 py-6">
-        <div className="bg-card rounded-2xl p-4 shadow-soft mb-6">
+        <div className="bg-card rounded-2xl p-4 shadow-soft mb-6 border border-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-foreground">間取り図</h2>
             <button
               onClick={() => navigate('/floorplan')}
-              className="text-primary text-sm font-medium hover:text-primary/80"
+              className="text-primary text-sm font-medium hover:text-primary/80 transition-colors"
             >
               編集
             </button>
@@ -112,21 +112,21 @@ const Home: React.FC = () => {
             <TabsContent value="1f">
               <div 
                 ref={floorPlanRef}
-                className="relative w-full h-64 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
+                className="relative w-full h-64 bg-secondary rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
               >
                 {/* シンプルな間取り図の背景 */}
                 <div className="absolute inset-4 border-2 border-primary/30 rounded-lg">
                   {/* リビングエリア */}
                   <div className="absolute top-4 left-4 w-1/2 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">リビング</span>
+                    <span className="text-xs text-muted-foreground">リビング</span>
                   </div>
                   {/* 寝室エリア */}
                   <div className="absolute top-4 right-4 w-2/5 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">寝室</span>
+                    <span className="text-xs text-muted-foreground">寝室</span>
                   </div>
                   {/* キッチンエリア */}
                   <div className="absolute bottom-4 left-4 w-1/3 h-2/5 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">キッチン</span>
+                    <span className="text-xs text-muted-foreground">キッチン</span>
                   </div>
                 </div>
 
@@ -176,7 +176,7 @@ const Home: React.FC = () => {
       {/* フローティングアクションボタン */}
       <button
         onClick={() => navigate('/add')}
-        className="fixed bottom-24 right-6 w-14 h-14 bg-accent text-white rounded-full shadow-lg flex items-center justify-center transition-smooth hover:scale-105 z-40"
+        className="fixed bottom-24 right-6 w-14 h-14 bg-accent text-accent-foreground rounded-full shadow-lg flex items-center justify-center transition-smooth hover:scale-105 z-40"
       >
         <Plus size={28} />
       </button>
@@ -184,11 +184,11 @@ const Home: React.FC = () => {
       {/* アイテム詳細モーダル */}
       {selectedItem && (
         <div 
-          className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-6 z-50"
           onClick={() => setSelectedItem(null)}
         >
           <div 
-            className="bg-card rounded-2xl p-6 max-w-sm w-full shadow-soft"
+            className="bg-card rounded-2xl p-6 max-w-sm w-full shadow-soft border border-border"
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-xl font-semibold text-foreground mb-2">
@@ -209,7 +209,7 @@ const Home: React.FC = () => {
             </div>
             <button
               onClick={() => setSelectedItem(null)}
-              className="w-full py-3 bg-primary text-white rounded-xl font-medium transition-smooth hover:bg-primary/90"
+              className="w-full py-3 bg-primary text-primary-foreground rounded-xl font-medium transition-smooth hover:bg-primary/90"
             >
               閉じる
             </button>
