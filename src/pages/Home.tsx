@@ -1,8 +1,10 @@
+
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
 import QuickAccessCard from '../components/QuickAccessCard';
 import NotificationCenter from '../components/NotificationCenter';
+import DarkModeToggle from '../components/DarkModeToggle';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { Item } from '../types';
 import { Plus } from 'lucide-react';
@@ -24,7 +26,7 @@ const Home: React.FC = () => {
       room: 'living',
       images: [],
       tags: ['重要書類', '旅行'],
-      coordinates: { x: 30, y: 40 },
+      coordinates: { x: 25, y: 45 },
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -36,7 +38,7 @@ const Home: React.FC = () => {
       room: 'bedroom',
       images: [],
       tags: ['冬物', 'アウター'],
-      coordinates: { x: 70, y: 25 },
+      coordinates: { x: 75, y: 30 },
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -78,6 +80,7 @@ const Home: React.FC = () => {
             <p className="text-muted-foreground">家の中の物を見つけましょう</p>
           </div>
           <div className="flex items-center space-x-3">
+            <DarkModeToggle />
             <NotificationCenter />
           </div>
         </div>
@@ -110,23 +113,49 @@ const Home: React.FC = () => {
             <TabsContent value="1f">
               <div 
                 ref={floorPlanRef}
-                className="relative w-full h-64 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
+                className="relative w-full h-80 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
               >
-                {/* シンプルな間取り図の背景 */}
-                <div className="absolute inset-4 border-2 border-primary/30 rounded-lg">
-                  {/* リビングエリア */}
-                  <div className="absolute top-4 left-4 w-1/2 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">リビング</span>
-                  </div>
-                  {/* 寝室エリア */}
-                  <div className="absolute top-4 right-4 w-2/5 h-1/2 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">寝室</span>
-                  </div>
-                  {/* キッチンエリア */}
-                  <div className="absolute bottom-4 left-4 w-1/3 h-2/5 border border-primary/20 rounded flex items-center justify-center">
-                    <span className="text-xs text-primary/60">キッチン</span>
-                  </div>
-                </div>
+                {/* より現実的な間取り図 */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 320">
+                  {/* 外壁 */}
+                  <rect x="20" y="20" width="360" height="280" fill="none" stroke="#26A69A" strokeWidth="3"/>
+                  
+                  {/* 玄関 */}
+                  <rect x="20" y="250" width="60" height="50" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="50" y="278" textAnchor="middle" className="text-xs fill-primary/60">玄関</text>
+                  
+                  {/* リビング・ダイニング */}
+                  <rect x="80" y="160" width="180" height="140" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="170" y="235" textAnchor="middle" className="text-sm fill-primary/60">リビング</text>
+                  
+                  {/* キッチン */}
+                  <rect x="260" y="200" width="120" height="100" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="320" y="255" textAnchor="middle" className="text-xs fill-primary/60">キッチン</text>
+                  
+                  {/* 寝室1 */}
+                  <rect x="80" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="150" y="85" textAnchor="middle" className="text-sm fill-primary/60">寝室</text>
+                  
+                  {/* 寝室2/書斎 */}
+                  <rect x="240" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="310" y="85" textAnchor="middle" className="text-xs fill-primary/60">書斎</text>
+                  
+                  {/* バスルーム */}
+                  <rect x="20" y="160" width="60" height="70" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="50" y="200" textAnchor="middle" className="text-xs fill-primary/60">風呂</text>
+                  
+                  {/* トイレ */}
+                  <rect x="20" y="120" width="60" height="40" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="50" y="145" textAnchor="middle" className="text-xs fill-primary/60">トイレ</text>
+                  
+                  {/* 廊下 */}
+                  <rect x="80" y="140" width="140" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
+                  
+                  {/* ドア表示 */}
+                  <line x1="80" y1="250" x2="80" y2="270" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="150" y1="160" x2="170" y2="160" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="260" y1="230" x2="280" y2="230" stroke="#26A69A" strokeWidth="2"/>
+                </svg>
 
                 {/* アイテムピン */}
                 {sampleItems.map((item) => (
