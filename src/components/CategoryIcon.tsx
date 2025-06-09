@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { 
-  Search,
+  Shirt,
   FileText, 
   Settings, 
   Circle, 
@@ -22,7 +22,7 @@ interface CategoryIconProps {
 }
 
 const categoryIcons: Record<Category, any> = {
-  clothing: Search,
+  clothing: Shirt,
   documents: FileText,
   tools: Settings,
   seasonal: Circle,
