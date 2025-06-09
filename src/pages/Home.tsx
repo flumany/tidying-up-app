@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
@@ -100,7 +101,7 @@ const Home: React.FC = () => {
             <TabsList className="grid w-full grid-cols-1 max-w-xs mb-4 bg-muted/50">
               <TabsTrigger 
                 value="1f" 
-                className="data-[state=active]:bg-muted data-[state=active]:text-muted-foreground"
+                className="data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm"
               >
                 1F
               </TabsTrigger>
