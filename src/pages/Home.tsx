@@ -1,8 +1,9 @@
-
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
 import QuickAccessCard from '../components/QuickAccessCard';
+import DarkModeToggle from '../components/DarkModeToggle';
+import NotificationCenter from '../components/NotificationCenter';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { Item } from '../types';
 import { Plus } from 'lucide-react';
@@ -14,7 +15,7 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const floorPlanRef = useRef<HTMLDivElement>(null);
 
-  // サンプルデータ
+  // サンプルデータ（期限管理と重要度を追加）
   const sampleItems: Item[] = [
     {
       id: '1',
@@ -77,8 +78,9 @@ const Home: React.FC = () => {
             <h1 className="text-2xl font-bold text-foreground">ホーム</h1>
             <p className="text-muted-foreground">家の中の物を見つけましょう</p>
           </div>
-          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-            <span className="text-primary font-semibold text-lg">家</span>
+          <div className="flex items-center space-x-3">
+            <NotificationCenter />
+            <DarkModeToggle />
           </div>
         </div>
         <SearchBar onSearch={handleSearch} />
