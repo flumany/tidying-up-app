@@ -1,17 +1,17 @@
 
 import React from 'react';
 import { 
-  Shirt, 
+  Search,
   FileText, 
-  Wrench, 
-  Snowflake, 
+  Settings, 
+  Circle, 
   Book, 
-  Smartphone, 
-  ChefHat, 
-  Spray, 
-  Gamepad2, 
-  Dumbbell,
-  Package
+  Search as Phone, 
+  Home, 
+  Circle as Cleaning, 
+  Circle as Toys, 
+  Circle as Sports,
+  Box
 } from 'lucide-react';
 import { Category } from '../types';
 
@@ -21,18 +21,18 @@ interface CategoryIconProps {
   className?: string;
 }
 
-const categoryIcons: Record<Category, React.ComponentType<{ size?: number; className?: string }>> = {
-  clothing: Shirt,
+const categoryIcons: Record<Category, any> = {
+  clothing: Search,
   documents: FileText,
-  tools: Wrench,
-  seasonal: Snowflake,
+  tools: Settings,
+  seasonal: Circle,
   books: Book,
-  electronics: Smartphone,
-  kitchenware: ChefHat,
-  cleaning: Spray,
-  toys: Gamepad2,
-  sports: Dumbbell,
-  other: Package
+  electronics: Phone,
+  kitchenware: Home,
+  cleaning: Cleaning,
+  toys: Toys,
+  sports: Sports,
+  other: Box
 };
 
 const categoryColors: Record<Category, string> = {
@@ -61,7 +61,7 @@ const CategoryIcon: React.FC<CategoryIconProps> = ({
     <IconComponent 
       size={size} 
       className={className}
-      style={{ color }}
+      color={color}
     />
   );
 };
