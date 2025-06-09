@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
 import QuickAccessCard from '../components/QuickAccessCard';
-import DarkModeToggle from '../components/DarkModeToggle';
 import NotificationCenter from '../components/NotificationCenter';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { Item } from '../types';
@@ -80,7 +79,6 @@ const Home: React.FC = () => {
           </div>
           <div className="flex items-center space-x-3">
             <NotificationCenter />
-            <DarkModeToggle />
           </div>
         </div>
         <SearchBar onSearch={handleSearch} />
