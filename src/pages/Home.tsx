@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
@@ -98,8 +97,13 @@ const Home: React.FC = () => {
           </div>
           
           <Tabs defaultValue="1f" className="w-full">
-            <TabsList className="grid w-full grid-cols-1 max-w-xs mb-4">
-              <TabsTrigger value="1f">1F</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-1 max-w-xs mb-4 bg-muted/50">
+              <TabsTrigger 
+                value="1f" 
+                className="data-[state=active]:bg-muted data-[state=active]:text-muted-foreground"
+              >
+                1F
+              </TabsTrigger>
             </TabsList>
             
             <TabsContent value="1f">
