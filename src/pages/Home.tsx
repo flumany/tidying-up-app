@@ -26,7 +26,7 @@ const Home: React.FC = () => {
       room: 'living',
       images: [],
       tags: ['重要書類', '旅行'],
-      coordinates: { x: 45, y: 65 }, // リビング内の適切な位置
+      coordinates: { x: 65, y: 70 }, // リビング内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -34,11 +34,11 @@ const Home: React.FC = () => {
       id: '2',
       name: '冬用コート',
       category: 'clothing',
-      location: 'クローゼット 上段',
+      location: 'ウォークインクローゼット',
       room: 'bedroom',
       images: [],
       tags: ['冬物', 'アウター'],
-      coordinates: { x: 38, y: 25 }, // 寝室内の適切な位置
+      coordinates: { x: 32, y: 35 }, // ウォークインクローゼット内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -46,11 +46,11 @@ const Home: React.FC = () => {
       id: '3',
       name: '工具セット',
       category: 'tools',
-      location: 'ガレージ 棚',
-      room: 'garage',
+      location: '書斎 収納',
+      room: 'study',
       images: [],
       tags: ['DIY', '修理'],
-      coordinates: { x: 25, y: 85 }, // ガレージ内の適切な位置
+      coordinates: { x: 75, y: 35 }, // 書斎内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     }
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                 ref={floorPlanRef}
                 className="relative w-full h-80 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
               >
-                {/* より現実的な間取り図（ガレージ付き） */}
+                {/* より現実的な間取り図（ウォークインクローゼット付き） */}
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 320">
                   {/* 外壁 */}
                   <rect x="20" y="20" width="360" height="280" fill="none" stroke="#26A69A" strokeWidth="3"/>
@@ -133,12 +133,16 @@ const Home: React.FC = () => {
                   <text x="320" y="255" textAnchor="middle" className="text-xs fill-primary/60">キッチン</text>
                   
                   {/* 寝室1 */}
-                  <rect x="80" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="150" y="85" textAnchor="middle" className="text-sm fill-primary/60">寝室</text>
+                  <rect x="140" y="20" width="120" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="200" y="85" textAnchor="middle" className="text-sm fill-primary/60">寝室</text>
                   
-                  {/* 寝室2/書斎 */}
-                  <rect x="240" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="310" y="85" textAnchor="middle" className="text-xs fill-primary/60">書斎</text>
+                  {/* ウォークインクローゼット */}
+                  <rect x="80" y="20" width="60" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="110" y="55" textAnchor="middle" className="text-xs fill-primary/60">WIC</text>
+                  
+                  {/* 書斎 */}
+                  <rect x="260" y="20" width="120" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="320" y="85" textAnchor="middle" className="text-xs fill-primary/60">書斎</text>
                   
                   {/* バスルーム */}
                   <rect x="20" y="160" width="60" height="70" fill="none" stroke="#26A69A" strokeWidth="2"/>
@@ -148,18 +152,16 @@ const Home: React.FC = () => {
                   <rect x="20" y="120" width="60" height="40" fill="none" stroke="#26A69A" strokeWidth="2"/>
                   <text x="50" y="145" textAnchor="middle" className="text-xs fill-primary/60">トイレ</text>
                   
-                  {/* ガレージ */}
-                  <rect x="20" y="60" width="60" height="60" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="50" y="95" textAnchor="middle" className="text-xs fill-primary/60">ガレージ</text>
-                  
                   {/* 廊下 */}
-                  <rect x="80" y="140" width="140" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
+                  <rect x="80" y="100" width="180" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
+                  <rect x="80" y="140" width="180" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
                   
                   {/* ドア表示 */}
                   <line x1="80" y1="250" x2="80" y2="270" stroke="#26A69A" strokeWidth="2"/>
                   <line x1="150" y1="160" x2="170" y2="160" stroke="#26A69A" strokeWidth="2"/>
                   <line x1="260" y1="230" x2="280" y2="230" stroke="#26A69A" strokeWidth="2"/>
-                  <line x1="80" y1="90" x2="100" y2="90" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="140" y1="90" x2="160" y2="90" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="110" y1="100" x2="110" y2="120" stroke="#26A69A" strokeWidth="2"/>
                 </svg>
 
                 {/* アイテムピン */}
