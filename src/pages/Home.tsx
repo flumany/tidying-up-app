@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
@@ -46,11 +45,11 @@ const Home: React.FC = () => {
       id: '3',
       name: '工具セット',
       category: 'tools',
-      location: 'ガレージ 棚',
-      room: 'garage',
+      location: '玄関前',
+      room: 'entrance',
       images: [],
       tags: ['DIY', '修理'],
-      coordinates: { x: 80, y: 25 }, // 書斎内の適切な位置（ガレージの代わり）
+      coordinates: { x: 28, y: 80 }, // 玄関前の位置
       lastAccessed: new Date(),
       createdAt: new Date()
     }
