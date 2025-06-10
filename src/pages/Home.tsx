@@ -50,7 +50,7 @@ const Home: React.FC = () => {
       room: 'garage',
       images: [],
       tags: ['DIY', '修理'],
-      coordinates: { x: 80, y: 25 }, // 書斎内の適切な位置（ガレージの代わり）
+      coordinates: { x: 25, y: 85 }, // ガレージ内の適切な位置
       lastAccessed: new Date(),
       createdAt: new Date()
     }
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                 ref={floorPlanRef}
                 className="relative w-full h-80 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
               >
-                {/* より現実的な間取り図 */}
+                {/* より現実的な間取り図（ガレージ付き） */}
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 320">
                   {/* 外壁 */}
                   <rect x="20" y="20" width="360" height="280" fill="none" stroke="#26A69A" strokeWidth="3"/>
@@ -148,6 +148,10 @@ const Home: React.FC = () => {
                   <rect x="20" y="120" width="60" height="40" fill="none" stroke="#26A69A" strokeWidth="2"/>
                   <text x="50" y="145" textAnchor="middle" className="text-xs fill-primary/60">トイレ</text>
                   
+                  {/* ガレージ */}
+                  <rect x="20" y="60" width="60" height="60" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="50" y="95" textAnchor="middle" className="text-xs fill-primary/60">ガレージ</text>
+                  
                   {/* 廊下 */}
                   <rect x="80" y="140" width="140" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
                   
@@ -155,6 +159,7 @@ const Home: React.FC = () => {
                   <line x1="80" y1="250" x2="80" y2="270" stroke="#26A69A" strokeWidth="2"/>
                   <line x1="150" y1="160" x2="170" y2="160" stroke="#26A69A" strokeWidth="2"/>
                   <line x1="260" y1="230" x2="280" y2="230" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="80" y1="90" x2="100" y2="90" stroke="#26A69A" strokeWidth="2"/>
                 </svg>
 
                 {/* アイテムピン */}
