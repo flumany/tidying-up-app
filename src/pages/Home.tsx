@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemPin from '../components/ItemPin';
@@ -15,7 +16,7 @@ const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const floorPlanRef = useRef<HTMLDivElement>(null);
 
-  // サンプルデータ（ピン位置を間取り図に合わせて修正）
+  // サンプルデータ（Figmaデザインに合わせてピン位置を調整）
   const sampleItems: Item[] = [
     {
       id: '1',
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
       room: 'living',
       images: [],
       tags: ['重要書類', '旅行'],
-      coordinates: { x: 45, y: 65 }, // リビング内の適切な位置
+      coordinates: { x: 50, y: 35 }, // 上部中央のピンク
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
       room: 'bedroom',
       images: [],
       tags: ['冬物', 'アウター'],
-      coordinates: { x: 38, y: 25 }, // 寝室内の適切な位置
+      coordinates: { x: 50, y: 60 }, // 中央のティール
       lastAccessed: new Date(),
       createdAt: new Date()
     },
@@ -49,7 +50,7 @@ const Home: React.FC = () => {
       room: 'entrance',
       images: [],
       tags: ['DIY', '修理'],
-      coordinates: { x: 28, y: 80 }, // 玄関前の位置
+      coordinates: { x: 30, y: 75 }, // 下部左のブルー
       lastAccessed: new Date(),
       createdAt: new Date()
     }
@@ -114,46 +115,43 @@ const Home: React.FC = () => {
                 ref={floorPlanRef}
                 className="relative w-full h-80 bg-warm-beige rounded-xl border-2 border-dashed border-primary/20 overflow-hidden"
               >
-                {/* より現実的な間取り図 */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 320">
-                  {/* 外壁 */}
-                  <rect x="20" y="20" width="360" height="280" fill="none" stroke="#26A69A" strokeWidth="3"/>
+                {/* Figmaデザインに合わせた正方形に近い間取り図 */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 320 320">
+                  {/* 外壁 - より正方形に近い形状 */}
+                  <rect x="40" y="40" width="240" height="240" fill="none" stroke="#26A69A" strokeWidth="3"/>
                   
-                  {/* 玄関 */}
-                  <rect x="20" y="250" width="60" height="50" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="50" y="278" textAnchor="middle" className="text-xs fill-primary/60">玄関</text>
+                  {/* 上部左の部屋 */}
+                  <rect x="40" y="40" width="80" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="80" y="85" textAnchor="middle" className="text-xs fill-primary/60">寝室</text>
                   
-                  {/* リビング・ダイニング */}
-                  <rect x="80" y="160" width="180" height="140" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="170" y="235" textAnchor="middle" className="text-sm fill-primary/60">リビング</text>
+                  {/* 上部右の部屋 */}
+                  <rect x="120" y="40" width="80" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="160" y="85" textAnchor="middle" className="text-xs fill-primary/60">書斎</text>
                   
-                  {/* キッチン */}
-                  <rect x="260" y="200" width="120" height="100" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="320" y="255" textAnchor="middle" className="text-xs fill-primary/60">キッチン</text>
+                  {/* 上部右端の部屋 */}
+                  <rect x="200" y="40" width="80" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="240" y="85" textAnchor="middle" className="text-xs fill-primary/60">WIC</text>
                   
-                  {/* 寝室1 */}
-                  <rect x="80" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="150" y="85" textAnchor="middle" className="text-sm fill-primary/60">寝室</text>
+                  {/* 中央左の部屋（バス・トイレ） */}
+                  <rect x="40" y="120" width="80" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="80" y="165" textAnchor="middle" className="text-xs fill-primary/60">水回り</text>
                   
-                  {/* 寝室2/書斎 */}
-                  <rect x="240" y="20" width="140" height="120" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="310" y="85" textAnchor="middle" className="text-xs fill-primary/60">書斎</text>
+                  {/* 中央のメインリビング */}
+                  <rect x="120" y="120" width="160" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="200" y="165" textAnchor="middle" className="text-sm fill-primary/60">リビング</text>
                   
-                  {/* バスルーム */}
-                  <rect x="20" y="160" width="60" height="70" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="50" y="200" textAnchor="middle" className="text-xs fill-primary/60">風呂</text>
+                  {/* 下部左の玄関 */}
+                  <rect x="40" y="200" width="80" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="80" y="245" textAnchor="middle" className="text-xs fill-primary/60">玄関</text>
                   
-                  {/* トイレ */}
-                  <rect x="20" y="120" width="60" height="40" fill="none" stroke="#26A69A" strokeWidth="2"/>
-                  <text x="50" y="145" textAnchor="middle" className="text-xs fill-primary/60">トイレ</text>
-                  
-                  {/* 廊下 */}
-                  <rect x="80" y="140" width="140" height="20" fill="none" stroke="#26A69A" strokeWidth="1" strokeDasharray="3,3"/>
+                  {/* 下部右のキッチン */}
+                  <rect x="120" y="200" width="160" height="80" fill="none" stroke="#26A69A" strokeWidth="2"/>
+                  <text x="200" y="245" textAnchor="middle" className="text-sm fill-primary/60">キッチン</text>
                   
                   {/* ドア表示 */}
-                  <line x1="80" y1="250" x2="80" y2="270" stroke="#26A69A" strokeWidth="2"/>
-                  <line x1="150" y1="160" x2="170" y2="160" stroke="#26A69A" strokeWidth="2"/>
-                  <line x1="260" y1="230" x2="280" y2="230" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="80" y1="200" x2="80" y2="220" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="120" y1="160" x2="140" y2="160" stroke="#26A69A" strokeWidth="2"/>
+                  <line x1="200" y1="120" x2="200" y2="140" stroke="#26A69A" strokeWidth="2"/>
                 </svg>
 
                 {/* アイテムピン */}
